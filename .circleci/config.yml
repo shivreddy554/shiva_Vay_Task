@@ -17,4 +17,4 @@ workflows:
   my-workflow:
     jobs:
       - print-a-message:
-          message: Hello!..
+          message: Hello!.
