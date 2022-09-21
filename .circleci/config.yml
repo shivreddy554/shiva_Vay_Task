@@ -114,11 +114,9 @@ workflows:
                   context: docker-hub
                   requires:
                       - build-production
-            - test:
-                  requires:
-                      - prepare-dependencies
+            
             - deploy-docker-image:
                   context: docker-hub
                   requires:
                       - build-docker-image
-                      - test
+                    
