@@ -78,24 +78,7 @@ jobs:
                   tag: $__BUILD_VERSION
                   registry: $DOCKER_REGISTRY
 
-    test:
-        docker:
-            - image: node:current-alpine
-              auth:
-                username: mydockerhub-user
-                password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-        parallelism: 2
-        steps:
-            - attach_workspace:
-                  at: .
-            - run:
-                  name: Run tests
-                  command: |
-                      circleci tests glob '**/*.test.ts' | circleci tests split --split-by timings | xargs yarn test:ci
-            - store_artifacts:
-                  path: test-results
-            - store_test_results:
-                  path: test-results
+  
 
     deploy-docker-image:
         machine:
